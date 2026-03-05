@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>logo.png</file>
+        <file>recruits_imgs/youhana.jpeg</file>
+        <file>bg_mp3/EG_comp.mp3</file>
+        <file>recruits_imgs/abdelfatah.jpeg</file>
+        <file>recruits_imgs/aboelyazeed.webp</file>
+        <file>recruits_imgs/ayman.jpeg</file>
+        <file>recruits_imgs/ehab.jpeg</file>
+        <file>recruits_imgs/gemy.webp</file>
+        <file>recruits_imgs/joe.jpeg</file>
+        <file>recruits_imgs/mahgoub.webp</file>
+        <file>recruits_imgs/mostafa_H.jpeg</file>
+    </qresource>
+</RCC>
