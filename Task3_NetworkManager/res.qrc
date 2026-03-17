@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/status.png</file>
+        <file>icons/Bluetooth.svg.png</file>
+    </qresource>
+</RCC>
