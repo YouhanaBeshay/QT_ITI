@@ -20,6 +20,7 @@ qt_add_qml_module(appTask6_MultiMediaApp
         QML_FILES homePage.qml
         QML_FILES audioPage.qml
         QML_FILES videoPage.qml
+        SOURCES src/usbscanner.h src/usbscanner.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

@@ -1,11 +1,14 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "src/usbscanner.h"
 
 int main(int argc, char *argv[])
 {
     qputenv("QT_QPA_PLATFORM", "xcb");
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard")); // Set the IM module
     QGuiApplication app(argc, argv);
+
+    qmlRegisterType<UsbScanner>("Task6_MultiMediaApp", 1, 0, "UsbScanner");
 
     QQmlApplicationEngine engine;
     QObject::connect(

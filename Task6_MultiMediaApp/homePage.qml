@@ -14,9 +14,10 @@ Page {
     ColumnLayout {
         id: homeScreen
         anchors.fill: parent
-        anchors.margins: 16
+        anchors.margins: 30
+
         spacing: 20
-        visible: showingHome
+        visible: true
 
         // Title
         Text {
@@ -120,7 +121,7 @@ Page {
             border.color: Material.accent
             border.width: 2
             radius: 15
-            clip: true  // ← Important: clips content to rectangle bounds
+            clip: true
 
             ListModel {
                 id: menuModel
@@ -211,9 +212,13 @@ Page {
                 }
             }
 
+            // Credit for this effect : Qt docs for path view (https://doc.qt.io/qt-6/qml-qtquick-pathview.html)
             PathView {
                 id: menuPathView
-                anchors.fill: parent
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.left: parent.left
+                anchors.bottom: pageDots.top
                 anchors.margins: 20
                 model: menuModel
                 delegate: menuDelegate
@@ -225,12 +230,12 @@ Page {
                 path: Path {
                     // Bottom center - where current item appears
                     startX: menuPathView.width / 2
-                    startY: menuPathView.height - 90  // ← Adjusted to keep item visible
+                    startY: menuPathView.height - 90
 
                     // Go up and right to top
                     PathQuad {
                         x: menuPathView.width / 2
-                        y: 90  // ← Adjusted to keep item visible
+                        y: 90
                         controlX: menuPathView.width - 60
                         controlY: menuPathView.height / 2
                     }
@@ -247,6 +252,7 @@ Page {
 
             // Page dots
             Row {
+                id : pageDots
                 anchors.bottom: parent.bottom
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottomMargin: 10

@@ -429,6 +429,19 @@ Page {
                         anchors.fill: parent
                         hoverEnabled: true
                         z : -1
+                        onDoubleClicked: {
+                            // pass the station info to the player
+                            playStation({
+                                            "stationuuid": model.stationuuid,
+                                            "name": model.name,
+                                            "url": model.url,
+                                            "favicon": model.favicon,
+                                            "country": model.country,
+                                            "codec": model.codec,
+                                            "tags": model.tags
+                                        })
+                            console.log("Station clicked:", model.name, "URL:", model.url)
+                        }
                     }
                 }
 
