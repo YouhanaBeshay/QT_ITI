@@ -21,6 +21,8 @@ qt_add_qml_module(appTask2_Calculator
         QML_FILES SplashScreen.qml
         QML_FILES CalcScreen.qml
         RESOURCES res.qrc
+        SOURCES calcbackend.h calcbackend.cpp
+        SOURCES exprtk.hpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

@@ -8,3 +8,5 @@
 - Supports Parentheses.
 - Clear button to reset the calculator.
 - Delete button to remove the last entered digit.
+ ---
+- <small> This task uses the [ExprTk](https://www.partow.net/programming/exprtk/index.html#exprtknotes) library [MIT License] </small>

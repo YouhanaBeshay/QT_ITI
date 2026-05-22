@@ -79,7 +79,7 @@ Page {
                         id: inputTextId
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                        text: qsTr("")
+                        text: calcBackend.inputText
                         wrapMode: Text.Wrap
                         font.pixelSize: displayLayoutID.height * 0.15
                         color: "#666666"
@@ -101,7 +101,7 @@ Page {
                     id: outputTextId
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignRight
-                    text: qsTr("")
+                    text: calcBackend.outputText
                     font.pixelSize: parent.height * 0.28
                     font.bold: true
                     color: "black"
@@ -157,16 +157,16 @@ Page {
 
                     onClicked: {
                         if (model.action === "number") {
-                            calcWindow.numberClicked(model.text)
+                            calcBackend.inputText += model.text
                         }
                         else if (model.action === "clear") {
-                            calcWindow.clearAllClicked()
+                            calcBackend.clear();
                         }
                         else if (model.action === "delete") {
-                            calcWindow.deleteClicked()
+                            calcBackend.deleteChar();
                         }
                         else if (model.action === "equals") {
-                            calcWindow.equalsClicked()
+                            calcBackend.calculate();
                         }
 
 
@@ -188,48 +188,48 @@ Page {
 
 
 
-    // signals
-    signal numberClicked (string number)
-    onNumberClicked: {
-        inputTextId.text += number
-    }
+    // // signals
+    // signal numberClicked (string number)
+    // onNumberClicked: {
+    //     inputTextId.text += number
+    // }
 
-    signal clearAllClicked()
-    onClearAllClicked: {
-        inputTextId.text = ""
-        outputTextId.text = ""
-    }
+    // signal clearAllClicked()
+    // onClearAllClicked: {
+    //     inputTextId.text = ""
+    //     outputTextId.text = ""
+    // }
 
-    signal deleteClicked()
-    onDeleteClicked: {
-        inputTextId.text = inputTextId.text.slice(0, -1)
-        outputTextId.text = ""
-    }
+    // signal deleteClicked()
+    // onDeleteClicked: {
+    //     inputTextId.text = inputTextId.text.slice(0, -1)
+    //     outputTextId.text = ""
+    // }
 
-    signal equalsClicked()
+    // signal equalsClicked()
 
-    function calculateExpression(expr) {
-        try {
-            var expression = expr
-            .replace(/×/g, "*")
-            .replace(/÷/g, "/")
-            .replace(/−/g, "-")
-            // javascript regex syntax is not fun :(
-            .replace(/(\d)\(/g, "$1*(")
-            .replace(/\)\(/g, ")*(")
-            return eval(expression).toString()
-        } catch(e) {
-            return "Syntax Error"
-        }
-    }
+    // function calculateExpression(expr) {
+    //     try {
+    //         var expression = expr
+    //         .replace(/×/g, "*")
+    //         .replace(/÷/g, "/")
+    //         .replace(/−/g, "-")
+    //         // javascript regex syntax is not fun :(
+    //         .replace(/(\d)\(/g, "$1*(")
+    //         .replace(/\)\(/g, ")*(")
+    //         return eval(expression).toString()
+    //     } catch(e) {
+    //         return "Syntax Error"
+    //     }
+    // }
 
-    onEqualsClicked: {
-        var x  = calculateExpression(inputTextId.text)
-        if (x === "Infinity" || x === "-Infinity" || x === "NaN") {
-            outputTextId.text = "Math Error"
-        }
-        else
-        outputTextId.text = x
+    // onEqualsClicked: {
+    //     var x  = calculateExpression(inputTextId.text)
+    //     if (x === "Infinity" || x === "-Infinity" || x === "NaN") {
+    //         outputTextId.text = "Math Error"
+    //     }
+    //     else
+    //         outputTextId.text = x
 
-    }
+    // }
 }
